@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row my-5 justify-content-center">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="border p-3 rounded mb-3">
+                        <h3 class="text-right" id="result">0</h3>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <input type="text" id="input1" placeholder="Input 1" class="form-control form-control-lg">
+                        </div>
+                        <div class="form-group col-6">
+                            <input type="text" id="input2" placeholder="Input 2" class="form-control form-control-lg">
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-outline-primary w-100 btn-lg" id="calc">Calculate</button>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-primary w-100 btn-lg" id="save">Save</button>
+                        </div>
+                    </div>
+                    <ul id="history">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    let result = document.getElementById("result");
+    let calc = document.getElementById("calc");
+    let save = document.getElementById("save");
+    let history = document.getElementById("history");
+
+    // process လုပ်
+    function addResult(x, y) {
+        return `${x} + ${y} = ${x + y}`;
+    }
+
+    calc.addEventListener("click", function () {
+        let input1 = Number(document.getElementById("input1").value);
+        let input2 = Number(document.getElementById("input2").value);
+        result.innerHTML = addResult(input1, input2);
+    });
+
+    save.addEventListener("click", function () {
+        let lastResult = result.innerHTML;
+        history.innerHTML += `<li>${lastResult}</li>`;
+        result.innerHTML = "0";
+        input1.value = "";
+        input2.value = "";
+    });
+
+
+</script>
+</body>
+</html>
